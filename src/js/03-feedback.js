@@ -23,9 +23,14 @@ function onFormData(evt) {
 }
 
 function onSubmitForm(evt) {
-    console.log(JSON.parse(localStorage.getItem(localStorageKey)));
-    
     evt.preventDefault();
+
+    if (dataForm && (!dataForm.email || !dataForm.message)) {
+        alert("Заповніть всі дані!!!");
+        return;
+    }
+
+    console.log(JSON.parse(localStorage.getItem(localStorageKey)));
     evt.currentTarget.reset();
     localStorage.removeItem(localStorageKey);
     dataForm = {};
